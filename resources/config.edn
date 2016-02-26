@@ -1,0 +1,20 @@
+{
+ :db-key :qa
+ :db-profiles {
+               :qa {
+                    :host "orcl1.kiev"
+                    :port 1521
+                    :sid "nnqa1"
+                    :user "nnuser"
+                    :password "dbuser"
+                   }
+               :dev {
+                     :host "orcl1.kiev"
+                     :port 1521
+                     :sid "nndev"
+                     :user "nnuser"
+                     :password "dbuser"
+                    }
+              }
+ :message.login-error "The user name or password is not correct or the account is locked. Please note that you have a limited number of attempts before your account is locked."
+}

@@ -1,0 +1,75 @@
+#login {
+	background: black url("/img/win_bg.jpg") no-repeat fixed;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+#login #top {
+	padding-left: 20px;
+	padding-top: 15px;
+	background-color: black;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 60px
+}
+
+#login #login-box {
+	background-color: lightgray;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border: 1px solid lightgray;
+	box-shadow: 5px 5px 5px;
+	width: 440px;
+}
+
+#login .box-title {
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+#login .info-label {
+	padding: 5px 20px 5px 20px;
+	text-align: left;
+	font-size: 14px;
+}
+
+#login .info-field {
+	padding: 5px 20px 5px 20px;
+	text-align: right;
+}
+
+#login #login-box .forgot-password {
+	font-size: smaller;
+}
+
+#login #login-box .error-message {
+	color: red;
+	font-weight: bold;
+	padding: 20px;
+}
+
+#login #reset-password-box {
+	background-color: lightgray;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	border: 1px solid lightgray;
+	box-shadow: 5px 5px 5px;
+	width: 440px;
+}
+
+#login #bottom {
+	background-color: blue;
+	color: white;
+	text-align: center;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
