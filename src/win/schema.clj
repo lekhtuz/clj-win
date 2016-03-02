@@ -84,7 +84,10 @@
 
 (defn load-user [username]
   (log/info "load-user: username =" username)
-  (if-let [login-info (select (login-info username))]
-    nil
+  (if-let [li (select (login-info username))]
+    (do 
+      (log/info "load-user: li =" li)
+      (first li)
+    )
   )
 )

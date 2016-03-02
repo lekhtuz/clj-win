@@ -7,17 +7,19 @@
   :dependencies [
                  [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.logging "0.3.1"]
+                 [base64-clj "0.1.1"]
                  [com.cemerick/friend "0.2.1"]
                  [compojure "1.4.0"]
+                 [digest "1.4.4"]
                  [hiccup "1.0.5"]
                  [korma "0.4.2"]
                  [oracle/ojdbc "11.2.0.4"]
                  [ring-server "0.3.1"]
                  [sonian/carica "1.2.1" :exclusions [cheshire]]
-                 [log4j "1.2.15" :exclusions [javax.mail/mail
-                                             javax.jms/jms
-                                             com.sun.jdmk/jmxtools
-                                             com.sun.jmx/jmxri]]
+                 [log4j "1.2.17" :exclusions [javax.mail/mail
+                                           javax.jms/jms
+                                           com.sun.jdmk/jmxtools
+                                           com.sun.jmx/jmxri]]
                 ]
 
   :jvm-opts ^:replace ["-Xmx1g" "-server"]

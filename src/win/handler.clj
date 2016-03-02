@@ -55,7 +55,7 @@
                               #(-> (h/html5 [:h2 "You do not have sufficient privileges to access " (:uri %)])
                                           resp/response
                                           (resp/status HttpServletResponse/SC_UNAUTHORIZED))
-                            :credential-fn #(creds/bcrypt-credential-fn auth/authenticate %)
+                            :credential-fn auth/authenticate
                             :login-failure-handler auth/login-failure-handler
                             :workflows [(workflows/interactive-form)]}))
 ;    (wrap-log-request-response "after wrap-base-url")
