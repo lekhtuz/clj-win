@@ -34,7 +34,7 @@
   (log/info "authenticate: username =" username ", password =" password ", credentials =" credentials)
   (if-let [ user (schema/load-user username) ]
     (if (password-match password (:password user))
-      { :identity user :roles nil }
+      { :username username :current-user user :roles #{ :roleA }  }
     )
   )
 )

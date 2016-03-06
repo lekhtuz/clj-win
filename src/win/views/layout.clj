@@ -8,4 +8,4 @@
      (include-css "/css/screen.css")
      (include-css "/css/dropdown.css")
     ]
-    [:body body]))
+    [:body#app body]))

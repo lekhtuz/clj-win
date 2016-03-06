@@ -60,7 +60,7 @@
     (fields [:id :userid] :username :password :organizationid [:lastLoginDate :last-login-date]
             :boaddrbookentry.firstname :boaddrbookentry.lastname :boaddrbookentry.email :boaddrbookentry.phoneno :boaddrbookentry.faxno
             [:boaddrbookentry.win_cw_agr_accepted :cwa-accepted]
-            :boorganization.orgtype)
+            :boorganization.orgtype :boorganization.organizationname)
     (where (and (= (sqlfn :lower :username) (str/lower-case username)) (> :transactionnum 0)))
   )
 )

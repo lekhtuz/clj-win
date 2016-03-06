@@ -19,6 +19,7 @@
 	background-color: lightgray;
 	position: fixed;
 	top: 50%;
+	transform: translateX(-50%);
 	left: 50%;
 	border: 1px solid lightgray;
 	box-shadow: 5px 5px 5px;
@@ -72,4 +73,69 @@
 	bottom: 0px;
 	left: 0px;
 	width: 100%;
+}
+
+#app {
+	margin: 0px;
+	padding: 0px;
+}
+
+#app #head {
+	background-color: #1E4176;
+}
+
+#app #head #logo {
+	margin: 4px 20px 2px 5px;
+	width: 105px;
+}
+
+#app #head #company-name {
+	color: white;
+	font-size:16px;
+	width: 280px;
+	margin-left:20px;
+}
+
+#app #head #welcome {
+	color: yellow;
+	margin-left: 120px;
+	font-size: 11px;
+}
+
+#app #head #change-role {
+	text-align: right;
+}
+
+#app #head #change-role a {
+	font-family: tahoma, arial, sans-serif;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#app #head #change-role a:hover {
+	color: yellow;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+#app #head #logout {
+	text-align: right;
+}
+
+#app #head #logout a {
+	font-family: tahoma, arial, sans-serif;
+	color: white;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#app #head #logout a:hover {
+	color: yellow;
+	font-size: 12px;
+	text-decoration: underline;
+}
+
+#app #head #comet-indicator {
+	float: right;
 }

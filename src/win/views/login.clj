@@ -53,35 +53,12 @@
     )
 )
 
-(defn menu []
-  [:div.menu
-   (unordered-list
-     (list
-       [:span
-        (link-to { :class "hide" } "/" "Home")
-        (unordered-list
-          (list
-            (link-to { :class "hide" } "/" "Menu 1 1")
-            (link-to { :class "hide" } "/" "Menu 1 2")
-          )
-        )
-       ]
-       (link-to { :class "hide" } "/" "Orders")
-       (link-to { :class "hide" } "/" "Tools")
-       (link-to { :class "hide" } "/" "Master Data")
-       (link-to { :class "hide" } "/" "Settings")
-       (link-to { :class "hide" } "/" "Help")
-     )
-   )
-  ]
-)
-
 (defn reset-password []
   (html5
     [:head
      [:title "Web Integrated Network: Reset Password"]
      (include-css "/css/screen.css")
-     (include-css "/css/dropdown.css")]
+    ]
     [:body#login
      [:div#top (image "img/win_logo.png")]
      (form-to [ :post "/ResetPassword" ]
@@ -90,7 +67,7 @@
          [:td.box-title { :colspan 2 } "Reset Password" ]
         ]
         [:tr
-         [:td.info-label { :colspan 2 } (menu) "Please enter your username below and we will email you a link to reset your password."]
+         [:td.info-label { :colspan 2 } "Please enter your username below and we will email you a link to reset your password."]
         ]
         [:tr
          [:td.info-label "User&nbsp;Name:" ]
