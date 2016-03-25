@@ -6,6 +6,7 @@
     [win.views.layout :as layout]
     [win.views.login :as login]
     [win.views.app :as app]
+    [win.views.orgsettings :as orgsettings]
   )
 )
 
@@ -19,6 +20,16 @@
          (log/info "/Application: checking session =" session)
          (if-let [identity (:cemerick.friend/identity session)]
            (app/home ((:authentications identity) (:current identity)))
+           (resp/redirect "/")
+         )
+       )
+  )
+
+  (GET "/Application/orgsettings" {session :session}
+       (do
+         (log/info "/Application: checking session =" session)
+         (if-let [identity (:cemerick.friend/identity session)]
+           (orgsettings/home ((:authentications identity) (:current identity)))
            (resp/redirect "/")
          )
        )

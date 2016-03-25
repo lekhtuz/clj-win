@@ -17,40 +17,40 @@
       [:head
        [:title "Web Integrated Network: Login Page"]
        (include-css "/css/screen.css")]
-      [:body#login
-       [:div#top (image "img/win_logo.png")]
-       (form-to [ :post "/login" ]
-         [:table#login-box { :cellspacing 0, :cellpadding 0 }
-          [:tr
-           [:td.box-title { :colspan 2 } "WIN Login" ]
-          ]
-          [:tr
-           [:td { :colspan 2 }
-            (if (= login_failed "Y") 
-              [:div.error-message message-login-error] "&nbsp;")
+       [:body#login
+        [:div#top (image "img/win_logo.png")]
+        (form-to [ :post "/login" ]
+          [:table#login-box { :cellspacing 0, :cellpadding 0 }
+           [:tr
+            [:td.box-title { :colspan 2 } "WIN Login" ]
+           ]
+           [:tr
+            [:td { :colspan 2 }
+             (if (= login_failed "Y") 
+               [:div.error-message message-login-error] "&nbsp;")
+            ]
+           ]
+           [:tr
+            [:td.info-label "User Name:" ]
+            [:td.info-field  (text-field :username)]
+           ]
+           [:tr
+            [:td.info-label "Password:" ]
+            [:td.info-field  (password-field :password)]
+           ]
+           [:tr
+            [:td { :colspan 2 } "&nbsp;"]
+           ]
+           [:tr
+            [:td.info-label.forgot-password (link-to "/ResetPassword" "Forgot&nbsp;Password?") ]
+            [:td.info-field (submit-button "Login") ]
            ]
           ]
-          [:tr
-           [:td.info-label "User Name:" ]
-           [:td.info-field  (text-field :username)]
-          ]
-          [:tr
-           [:td.info-label "Password:" ]
-           [:td.info-field  (password-field :password)]
-          ]
-          [:tr
-           [:td { :colspan 2 } "&nbsp;"]
-          ]
-          [:tr
-           [:td.info-label.forgot-password (link-to "/ResetPassword" "Forgot&nbsp;Password?") ]
-           [:td.info-field (submit-button "Login") ]
-          ]
-         ]
-       )
-       [:div#bottom "&copy; Odyssey Logistics &amp; Technology Corporation"]
+        )
+        [:div#bottom "&copy; Odyssey Logistics &amp; Technology Corporation"]
        ]
-      )
     )
+  )
 )
 
 (defn reset-password []
@@ -82,5 +82,6 @@
        ]
      )
      [:div#bottom "&copy; Odyssey Logistics &amp; Technology Corporation"]
-     ])
+    ]
+  )
 )
