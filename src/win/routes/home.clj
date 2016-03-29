@@ -3,6 +3,7 @@
     [clojure.tools.logging :as log :refer [info]]
     [compojure.core :refer :all]
     [ring.util.response :as resp]
+    [win.schema :as schema :refer [load-organization]]
     [win.views.layout :as layout]
     [win.views.login :as login]
     [win.views.app :as app]
@@ -29,7 +30,9 @@
        (do
          (log/info "/Application: checking session =" session)
          (if-let [identity (:cemerick.friend/identity session)]
-           (orgsettings/home ((:authentications identity) (:current identity)))
+           (let [current-user (:current-user ((:authentications identity) (:current identity)))]
+             (orgsettings/home current-user (schema/load-organization (:org-id current-user)))
+           )
            (resp/redirect "/")
          )
        )

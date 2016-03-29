@@ -96,7 +96,7 @@
        [:table { :width "100%", :cellpadding "0", :cellspacing "0" }
         [:tr
          [:td#logo { :valign "center" } (image "/img/title_logo.png")]
-         [:td#company-name { :valign "center" } (:organizationname current-user) ]
+         [:td#company-name { :valign "center" } (:organization-name current-user) ]
          [:td#welcome { :valign "center" } "Welcome " (:firstname current-user) " " (:lastname current-user) " (role)"]
          [:td#change-role { :valign "center" } (link-to "" "Change role")]
          [:td#logout { :valign "center" } (link-to "" "Logout")]

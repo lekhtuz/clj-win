@@ -34,7 +34,11 @@
   (log/info "authenticate: username =" username ", password =" password ", credentials =" credentials)
   (if-let [ user (schema/load-user username) ]
     (if (password-match password (:password user))
-      { :username username :current-user user :roles #{ :roleA }  }
+      { 
+       :username username
+       :current-user (assoc user :org-id (schema/get-organization-ngid (:nn-org-id user)))
+       :roles #{ :roleA }
+      }
     )
   )
 )

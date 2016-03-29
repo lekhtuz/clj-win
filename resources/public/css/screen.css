@@ -143,15 +143,24 @@
 #orgsettings {
 	width: 650px;
 	border: 3px solid #1e4176;
+	font-family: tahoma, arial, verdana, sans-serif;
+	font-size: 12px;
 }
 
 #orgsettings th {
 	background-color: #1e4176;
 	color: white;
+	font-size: 16px;
 }
 
+/*
+#orgsettings fieldset {
+	width: 640px;
+}
+*/
+
 #orgsettings legend {
-	font-size: 11;
+	font-size: 11px;
 	color: rgb(21, 66, 139);
 	font-family: tahoma, arial, helvetica, sans-serif;
 }
