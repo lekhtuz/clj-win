@@ -1,28 +1,31 @@
 function removeFileToUpload()
 {
-	document.getElementById('logo-upload').value = '';
+	$('#logo-upload').val('');
 }
 
-function turnLogoOnOff()
-{
-	if (document.getElementById('use-logo-in-bol').checked) {
-		document.getElementById('logo-groupbox').style.display = 'block';
-	} else {
-		document.getElementById('logo-groupbox').style.display = 'none';
+$(function() {
+	var logoOnchange = function() {
+		if (this.checked) {
+			$('#logo-groupbox').show();
+		} else {
+			$('#logo-groupbox').hide();
+		}
 	}
-}
 
-function turnBolMappingOnOff()
-{
-	if (document.getElementById('order-bol-mapping-cb').checked) {
-		document.getElementById('order-bol-mapping').disabled = false;
-	} else {
-		document.getElementById('order-bol-mapping').disabled = true;
+	var bolMappingOnchange = function() {
+		if (this.checked) {
+			$('#order-bol-mapping').removeAttr('disabled');
+		} else {
+			$('#order-bol-mapping').attr('disabled', 'disabled');
+		}
 	}
-}
 
-function initpage()
-{
 	console.log("initpage started")
-	turnBolMappingOnOff();
-}
+	
+	$('#use-logo-in-bol').change(logoOnchange);
+	$('#order-bol-mapping-cb').change(bolMappingOnchange);
+	
+	logoOnchange();
+	bolMappingOnchange();
+});
+

@@ -1,6 +1,6 @@
 (ns win.views.layout
   (:require 
-    [hiccup.page :refer [html5 include-css]]
+    [hiccup.page :refer [html5 include-css include-js]]
     [hiccup.element :refer [image link-to unordered-list]]
   )
 )
@@ -90,6 +90,7 @@
      [:title "Web Integrated Network"]
      (include-css "/css/screen.css")
      (include-css "/css/dropdown.css")
+     (include-js "https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js")
     ]
     [:body#app 
      [:div#head

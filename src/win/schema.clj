@@ -157,8 +157,6 @@
 (defn start []
   (log/info "Starting db ...")
   (log/info "db-profile =" db-profile)
-  (log/info "nn-db =" nn-db)
-  (log/info "ng-db =" ng-db)
   (log/info "DB started!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 )
 

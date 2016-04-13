@@ -2,7 +2,7 @@
   (:require
     [clojure.tools.logging :as log :refer [info]]
     [hiccup.element :refer [image javascript-tag link-to unordered-list]]
-    [hiccup.form :refer [check-box drop-down file-upload form-to submit-button text-field]]
+    [hiccup.form :refer [check-box drop-down email-field file-upload form-to submit-button text-field]]
     [hiccup.page :refer [include-js]]
     [win.views.layout :as layout]
   )
@@ -30,7 +30,7 @@
   (log/info "orgsettings/home: orgsettings =" orgsettings)
   (layout/common current-user
     (include-js "/js/orgsettings.js")
-    (form-to [:post ""]
+    (form-to {:enctype "multipart/form-data"} [:post ""]
       [:center
        [:table#orgsettings
         [:tr
@@ -38,7 +38,7 @@
         ]
         [:tr
          [:td {:width "50%"} "The \"E-Mail From\" address which is used to send Tender Requests"]
-         [:td {:width "50%"} (text-field :booking-email-from (:booking-email-from orgsettings))]
+         [:td {:width "50%"} (email-field :booking-email-from (:booking-email-from orgsettings))]
         ]
         [:tr
          [:td {:colspan 2} (check-box :copy-user-info (:copy-user-info orgsettings)) "Copy user's contact information on Order creation"]
@@ -54,7 +54,7 @@
         ]
         [:tr
          [:td {:colspan 2}
-          (check-box {:onclick "javascript:turnBolMappingOnOff()"} :order-bol-mapping-cb (:order-bol-mapping orgsettings))
+          (check-box :order-bol-mapping-cb (:order-bol-mapping orgsettings))
           "Enable automatic creation of BOL# using "
           (drop-down :order-bol-mapping order-bol-mapping (:order-bol-mapping orgsettings))
          ]
@@ -74,7 +74,7 @@
          ]
         ]
         [:tr
-         [:td {:colspan 2} (check-box {:onclick "javascript:turnLogoOnOff();"} :use-logo-in-bol) "Use Logo in BOL"]
+         [:td {:colspan 2} (check-box :use-logo-in-bol) "Use Logo in BOL"]
         ]
         [:tr#logo-groupbox
          [:td {:colspan 2}
@@ -89,11 +89,10 @@
          ]
         ]
         [:tr
-         [:td {:colspan 2 :align "right"} (submit-button "Save Settings")]
+         [:td {:colspan 2 :align "right"} (submit-button {:onclick "javascript:validateForm();"}"Save Settings")]
         ]
        ]
       ]
     )
-    (javascript-tag "initpage()")
   )
 )
