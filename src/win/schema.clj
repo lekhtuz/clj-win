@@ -112,7 +112,7 @@
     (where (= :org_id org-id))
   )
 )
-  
+
 (defentity md-organization
   (database ng-db)
   (table :md_organization)
@@ -130,33 +130,64 @@
   )
 )
 
-(defn- load-first-record [sqlfn param]
+; SELECT T.NAME FROM MD_SAAS_ORDER_TEMPLATE T WHERE T.ORG_ID = ?
+
+(defentity md-order-template
+  (database ng-db)
+  (table :md_saas_order_template)
+  (transform (fn [{id :id org-id :org-id compressed :compressed tiny-body :tiny-body body :body :as ot}]
+               (log/info "md-saas-order-template transform: ot =" ot)
+               (assoc (dissoc ot :tiny-body)
+                      :id (int id)
+                      :org-id (int org-id)
+                      :compressed (= compressed "Y")
+                      :body (if tiny-body tiny-body body)
+               )
+             )
+  )
+)
+
+(defn md-order-templates [org-id]
+  (-> (select* md-order-template)
+    (fields :id [:org_id :org-id] :name [:tiny_body :tiny-body] :body [:body_is_compressed :compressed])
+    (where (= :org_id org-id))
+  )
+)
+
+(defn- load-all-records [parent-id sqlfn param]
+  (log/info parent-id ": param =" param)
   (if-let [result (exec (sqlfn param))]
     (do
-      (log/info "load-first-record: result =" result)
-      (first result)
+      (log/info parent-id ": result[" (count result) "] =" result)
+      result
     )
   )
 )
 
+(defn- load-first-record [parent-id sqlfn param]
+  (first (load-all-records parent-id sqlfn param))
+)
+
 (defn load-user [username]
-  (log/info "load-user: username =" username)
-  (load-first-record login-info username)
+  (load-first-record "load-user(username)" login-info username)
 )
 
 (defn load-organization [id]
-  (log/info "load-organization: id =" id)
-  (load-first-record orgsettings-info id)
+  (load-first-record "load-organization(id)" orgsettings-info id)
 )
 
 (defn get-organization-ngid [nn-id]
-  (log/info "get-organization-ngid: nn-id =" nn-id)
-  (:id (load-first-record md-organization-info nn-id))
+  (:id (load-first-record "get-organization-ngid(nnid)" md-organization-info nn-id))
+)
+
+(defn get-order-templates [org-id]
+  (load-all-records "get-order-templates(org-id)" md-order-templates org-id)
 )
 
 (defn start []
   (log/info "Starting db ...")
   (log/info "db-profile =" db-profile)
+  (log/info "get-order-templates =" (get-order-templates 12))
   (log/info "DB started!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 )
 

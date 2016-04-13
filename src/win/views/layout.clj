@@ -2,10 +2,11 @@
   (:require 
     [hiccup.page :refer [html5 include-css include-js]]
     [hiccup.element :refer [image link-to unordered-list]]
+    [win.schema :as schema :refer [get-order-templates]]
   )
 )
 
-(defn menu []
+(defn menu [org-id]
   [:div.menu
    (unordered-list
      (list
@@ -22,14 +23,11 @@
         (link-to { :class "hide" } "/" "Orders")
         (unordered-list
           (list
-            (link-to { :class "hide" } "/" "New Blank Order")
+            (link-to { :class "hide" } "/Application/neworder" "New Blank Order")
             [:span
              (link-to { :class "hide" } "/" "New from Template")
              (unordered-list
-               (list
-                 (link-to { :class "hide" } "/" "Template 1")
-                 (link-to { :class "hide" } "/" "Template 2")
-               )
+               (map #(link-to { :class "hide" } (str "/Application/neworder?template=" (:id %)) (:name %)) (get-order-templates org-id))
              )
             ]
           )
@@ -105,7 +103,7 @@
          ]
         ]
      ]
-     (menu)
+     (menu (:org-id current-user))
      body
     ]
   )

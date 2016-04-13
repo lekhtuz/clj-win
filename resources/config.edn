@@ -1,5 +1,5 @@
 {
- :db-key :qa
+ :db-key :dev
  :db-profiles {
                :qa {
                     :nn {
@@ -19,11 +19,11 @@
                     }
                :dev {
                      :nn {
-                          :host "orcl1.kiev"
-                          :port 1521
-                          :sid "nndev"
-                          :user "nnuser"
-                          :password "dbuser"
+                         :host "orcl1.kiev"
+                         :port 1521
+                         :sid "nnqa1"
+                         :user "nnuser"
+                         :password "dbuser"
                           }
                      :ng {
                          :host "ngora2.kiev"
